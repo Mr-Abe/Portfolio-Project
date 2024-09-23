@@ -45,7 +45,6 @@ class ShoppingCart():
     def modify_item(self, item):
         for i, cart_item in enumerate(self.cart_items):
             if cart_item.item_name == item.item_name:
-                # Modify the item's attributes
                 self.cart_items[i].item_price = item.item_price
                 self.cart_items[i].item_quantity = item.item_quantity
                 return
@@ -75,5 +74,8 @@ class ShoppingCart():
     def print_descriptions(self):
         print(f"{self.customer_name}'s Shopping Cart - {self.current_date}")
         print("\nItem Descriptions")
-        for item in self.cart_items:
-            item.print_item_description()
+        if not self.cart_items:
+            print("SHOPPING CART IS EMPTY")
+        else:
+            for item in self.cart_items:
+                item.print_item_description()
